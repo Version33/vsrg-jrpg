@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbj0v7kavdxgc"]
+
+[ext_resource type="PackedScene" uid="uid://qsntjegxulxm" path="res://Scenes/Character.tscn" id="1_bcbcq"]
+[ext_resource type="Script" uid="uid://d1bf44tdwdjm0" path="res://Scripts/world.gd" id="1_js7pq"]
+[ext_resource type="PackedScene" uid="uid://bobcoqynup0kj" path="res://Scenes/WorldButton.tscn" id="2_js7pq"]
+[ext_resource type="PackedScene" uid="uid://0w2yiivabdy3" path="res://Scenes/Track.tscn" id="3_eu7l1"]
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_js7pq")
+
+[node name="Party" type="Node" parent="."]
+
+[node name="Character1" parent="Party" instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.311978, 0, -0.60364133)
+
+[node name="Character2" parent="Party" instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1532726, 0, -0.22181553)
+
+[node name="Character3" parent="Party" instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.135064, 0, -0.14987826)
+
+[node name="Character4" parent="Party" instance=ExtResource("1_bcbcq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7414436, -4.7683716e-07, -0.7855995)
+
+[node name="Enemy" type="Node3D" parent="."]
+
+[node name="Buttons" type="Node" parent="."]
+
+[node name="Button1" parent="Buttons" instance=ExtResource("2_js7pq")]
+transform = Transform3D(1.967899, 0.1457938, -0.3257602, -0.3469285, 1.2098831, -1.554292, 0.08376285, 1.5858521, 1.2157536, -5.5, 2.8, -1.3)
+
+[node name="Button2" parent="Buttons" instance=ExtResource("2_js7pq")]
+transform = Transform3D(1.9941292, 0.055854704, -0.14257647, -0.14257647, 1.3565246, -1.4627073, 0.055854715, 1.4685779, 1.3565246, -2.3, 2.6, -0.9)
+
+[node name="Button3" parent="Buttons" instance=ExtResource("2_js7pq")]
+transform = Transform3D(1.9678985, -0.14579378, 0.32576013, 0.34692842, 1.209883, -1.5542917, -0.083762825, 1.585852, 1.2157533, 5.5, 2.82, -1.3)
+
+[node name="Button4" parent="Buttons" instance=ExtResource("2_js7pq")]
+transform = Transform3D(1.9941292, -0.055854708, 0.14257647, 0.14257647, 1.3565247, -1.4627073, -0.055854715, 1.468578, 1.3565246, 2.3, 2.6, -0.9)
+
+[node name="Track" parent="." instance=ExtResource("3_eu7l1")]
+transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 2.64256, -14.623983)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
+fov = 100.0
+
+[node name="Character" parent="." instance=ExtResource("1_bcbcq")]
+transform = Transform3D(7.93, 0, 0, 0, 7.93, 0, 0, 0, 7.93, 0, 6, -32.88977)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.79863554, 0.601815, 0, -0.601815, 0.79863554, 0, 5.8867416, 5.220633)
