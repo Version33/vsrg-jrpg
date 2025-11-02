@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bobcoqynup0kj"]
+
+[ext_resource type="Script" uid="uid://cvlvwo03044wo" path="res://Scripts/button.gd" id="1_7ppm6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ppm6"]
+albedo_color = Color(0, 0, 0, 1)
+metallic = 0.42
+metallic_specular = 0.38
+
+[sub_resource type="BoxMesh" id="BoxMesh_goa6q"]
+material = SubResource("StandardMaterial3D_7ppm6")
+size = Vector3(1, 0.12, 0.63)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsusv"]
+albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jh5ek"]
+material = SubResource("StandardMaterial3D_jsusv")
+size = Vector3(0.895, 0.225, 0.505)
+
+[node name="Button" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("1_7ppm6")
+
+[node name="Container" type="Container" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ButtonOuter" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_goa6q")
+
+[node name="ButtonInner" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jh5ek")
+
+[connection signal="mouse_entered" from="Container" to="." method="_on_container_mouse_entered"]
+[connection signal="mouse_exited" from="Container" to="." method="_on_container_mouse_exited"]
