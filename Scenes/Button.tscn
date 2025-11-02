@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bobcoqynup0kj"]
+[gd_scene load_steps=7 format=3 uid="uid://bobcoqynup0kj"]
 
 [ext_resource type="Script" uid="uid://cvlvwo03044wo" path="res://Scripts/button.gd" id="1_7ppm6"]
 
@@ -18,15 +18,12 @@ albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
 material = SubResource("StandardMaterial3D_jsusv")
 size = Vector3(0.895, 0.225, 0.505)
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p3102"]
+points = PackedVector3Array(0.50793654, 0.07492064, 0.32785714, -0.50793654, -0.06793651, -0.32293653, -0.50793654, 0.07492064, -0.32293653, 0.50793654, -0.06793651, -0.32293653, -0.50793654, -0.06793651, 0.32785714, -0.50793654, 0.07492064, 0.32785714, 0.50793654, 0.07492064, -0.32293653, 0.50793654, -0.06793651, 0.32785714)
+
 [node name="Button" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_7ppm6")
-
-[node name="Container" type="Container" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="ButtonOuter" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_goa6q")
@@ -34,5 +31,9 @@ mesh = SubResource("BoxMesh_goa6q")
 [node name="ButtonInner" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jh5ek")
 
-[connection signal="mouse_entered" from="Container" to="." method="_on_container_mouse_entered"]
-[connection signal="mouse_exited" from="Container" to="." method="_on_container_mouse_exited"]
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_p3102")

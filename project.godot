@@ -23,3 +23,7 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
+
+[layer_names]
+
+3d_physics/layer_5="WorldUI"

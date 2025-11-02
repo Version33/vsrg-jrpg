@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbj0v7kavdxgc"]
+[gd_scene load_steps=6 format=3 uid="uid://dbj0v7kavdxgc"]
 
 [ext_resource type="PackedScene" uid="uid://qsntjegxulxm" path="res://Scenes/Character.tscn" id="1_bcbcq"]
 [ext_resource type="Script" uid="uid://d1bf44tdwdjm0" path="res://Scripts/world.gd" id="1_js7pq"]
 [ext_resource type="PackedScene" uid="uid://0w2yiivabdy3" path="res://Scenes/Track.tscn" id="3_eu7l1"]
-[ext_resource type="PackedScene" uid="uid://bo17vlulyc6s0" path="res://Scenes/Buttons.tscn" id="4_gjpho"]
+[ext_resource type="Script" uid="uid://darjqw3ht5tf0" path="res://Scripts/cursor.gd" id="4_p70al"]
+[ext_resource type="PackedScene" uid="uid://bobcoqynup0kj" path="res://Scenes/Button.tscn" id="5_45d1s"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_js7pq")
@@ -33,8 +34,22 @@ transform = Transform3D(1, 0, 0, 0, 0.79863554, 0.601815, 0, -0.601815, 0.798635
 [node name="Track" parent="." instance=ExtResource("3_eu7l1")]
 transform = Transform3D(1, 0, 0, 0, 0.9848077, -0.17364818, 0, 0.17364818, 0.9848077, 0, 2.64256, -14.623983)
 
-[node name="Buttons" parent="." instance=ExtResource("4_gjpho")]
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
 fov = 100.0
+
+[node name="Buttons" type="Node" parent="." node_paths=PackedStringArray("buttons")]
+script = ExtResource("4_p70al")
+buttons = [NodePath("Button0"), NodePath("Button1"), NodePath("Button2"), NodePath("Button3")]
+
+[node name="Button0" parent="Buttons" instance=ExtResource("5_45d1s")]
+transform = Transform3D(2, 0, 0, 0, 0.8134732, -1.8270912, 0, 1.827091, 0.81347334, -5, 2.7, -0.7)
+
+[node name="Button1" parent="Buttons" instance=ExtResource("5_45d1s")]
+transform = Transform3D(1.9951282, -0.13951296, 0, 0.047716238, 0.6823741, -1.8793851, 0.13109928, 1.8748075, 0.68404025, -2.2, 2.7, -0.5)
+
+[node name="Button2" parent="Buttons" instance=ExtResource("5_45d1s")]
+transform = Transform3D(1.9951282, 0.13951294, 0, -0.047716238, 0.68237406, -1.8793852, -0.13109928, 1.8748072, 0.6840403, 2.2, 2.7, -0.5)
+
+[node name="Button3" parent="Buttons" instance=ExtResource("5_45d1s")]
+transform = Transform3D(2, 0, 0, 0, 0.8134732, -1.827091, 0, 1.827091, 0.8134732, 5, 2.7, -0.7)
