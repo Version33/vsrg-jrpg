@@ -1,6 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bobcoqynup0kj"]
 
 [ext_resource type="Script" uid="uid://cvlvwo03044wo" path="res://Scripts/button.gd" id="1_7ppm6"]
+[ext_resource type="Material" uid="uid://davsj838m13k8" path="res://Resources/Button_Inactive.tres" id="2_a506e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ppm6"]
 albedo_color = Color(0, 0, 0, 1)
@@ -11,11 +12,8 @@ metallic_specular = 0.38
 material = SubResource("StandardMaterial3D_7ppm6")
 size = Vector3(1, 0.12, 0.63)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jsusv"]
-albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
-
 [sub_resource type="BoxMesh" id="BoxMesh_jh5ek"]
-material = SubResource("StandardMaterial3D_jsusv")
+material = ExtResource("2_a506e")
 size = Vector3(0.895, 0.225, 0.505)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p3102"]
