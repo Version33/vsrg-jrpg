@@ -1,9 +1,49 @@
-[gd_scene load_steps=2 format=3 uid="uid://0w2yiivabdy3"]
+[gd_scene load_steps=6 format=3 uid="uid://0w2yiivabdy3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xe1eg"]
 size = Vector3(5, 0.1, 30)
+
+[sub_resource type="Curve3D" id="Curve3D_tsduo"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.875, 0.5, -15, 0, 0, 0, 0, 0, 0, -1.875, 0.5, 15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_7ehuj"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.625, 0.5, -15, 0, 0, 0, 0, 0, 0, -0.625, 0.5, 15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_3hn85"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.625, 0.5, -15, 0, 0, 0, 0, 0, 0, 0.625, 0.5, 15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve3D" id="Curve3D_iwb3h"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.875, 0.5, -15, 0, 0, 0, 0, 0, 0, 1.875, 0.5, 15),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="Track" type="Node3D"]
 
 [node name="Track" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_xe1eg")
+
+[node name="Lane0" type="Path3D" parent="."]
+curve = SubResource("Curve3D_tsduo")
+
+[node name="Lane1" type="Path3D" parent="."]
+curve = SubResource("Curve3D_7ehuj")
+
+[node name="Lane2" type="Path3D" parent="."]
+curve = SubResource("Curve3D_3hn85")
+
+[node name="Lane3" type="Path3D" parent="."]
+curve = SubResource("Curve3D_iwb3h")

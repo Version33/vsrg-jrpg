@@ -24,6 +24,25 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
 
+[input]
+
+Note0={
+"deadzone": 0.2,
+"events": []
+}
+Note1={
+"deadzone": 0.2,
+"events": []
+}
+Note2={
+"deadzone": 0.2,
+"events": []
+}
+Note3={
+"deadzone": 0.2,
+"events": []
+}
+
 [layer_names]
 
 3d_physics/layer_5="WorldUI"
