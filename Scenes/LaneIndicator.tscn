@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8q3r7bvjx1wy"]
+
+[ext_resource type="Script" path="res://Scripts/track/lane_indicator.gd" id="1_indicator"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_indicator"]
+transparency = 1
+albedo_color = Color(0.5, 0.5, 0.5, 0.7)
+metallic = 0.5
+roughness = 0.4
+shading_mode = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_indicator"]
+material = SubResource("StandardMaterial3D_indicator")
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.05
+radial_segments = 32
+rings = 1
+
+[node name="LaneIndicator" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_indicator")
+script = ExtResource("1_indicator")

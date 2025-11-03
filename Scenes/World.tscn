@@ -1,45 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbj0v7kavdxgc"]
+[gd_scene load_steps=13 format=3 uid="uid://dbj0v7kavdxgc"]
 
 [ext_resource type="PackedScene" uid="uid://qsntjegxulxm" path="res://Scenes/Character.tscn" id="1_bcbcq"]
 [ext_resource type="Script" uid="uid://d1bf44tdwdjm0" path="res://Scripts/world.gd" id="1_js7pq"]
-[ext_resource type="Script" uid="uid://darjqw3ht5tf0" path="res://Scripts/cursor.gd" id="4_p70al"]
+[ext_resource type="Script" uid="uid://darjqw3ht5tf0" path="res://Scripts/ui/cursor.gd" id="4_p70al"]
 [ext_resource type="PackedScene" uid="uid://bobcoqynup0kj" path="res://Scenes/Button.tscn" id="5_45d1s"]
-[ext_resource type="Script" uid="uid://ctyxo8qg3jh8v" path="res://Scripts/track.gd" id="5_p70al"]
+[ext_resource type="Script" uid="uid://ctyxo8qg3jh8v" path="res://Scripts/track/track.gd" id="5_p70al"]
+[ext_resource type="Script" uid="uid://dpptf4wffehga" path="res://Scripts/chart/chart_manager.gd" id="6_45d1s"]
+[ext_resource type="Script" uid="uid://b1r3whl8n67h3" path="res://Scripts/input/input_handler.gd" id="6_y7y61"]
+[ext_resource type="PackedScene" uid="uid://c8q3r7bvjx1wy" path="res://Scenes/LaneIndicator.tscn" id="8_indicator"]
+[ext_resource type="Script" uid="uid://bqy7k3m8xnv5t" path="res://Scripts/track/lane_indicator.gd" id="9_uo7di"]
 
 [sub_resource type="Curve3D" id="Curve3D_45d1s"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.0919466, 0, 0, 0, 0, 0, 0, 0, 4.756337, -32.382156),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 5, -32, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
 
-[sub_resource type="Curve3D" id="Curve3D_p70al"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -1.5, 0, -0.0919466, 0, 0, 0, 0, 0, 0, -1.5, 4.756337, -32.382156),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_indicator"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.5, 0.5, 0.5, 0.7)
 
-[sub_resource type="Curve3D" id="Curve3D_y7y61"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.5, 0, -0.0919466, 0, 0, 0, 0, 0, 0, -0.5, 4.756337, -32.382156),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_q2d71"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.5, 0, -0.0919466, 0, 0, 0, 0, 0, 0, 0.5, 4.756337, -32.382156),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
-
-[sub_resource type="Curve3D" id="Curve3D_uo7di"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 1.5, 0, -0.0919466, 0, 0, 0, 0, 0, 0, 1.5, 4.756337, -32.382156),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+[sub_resource type="CylinderMesh" id="CylinderMesh_indicator"]
+material = SubResource("StandardMaterial3D_indicator")
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.05
+radial_segments = 32
+rings = 1
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_js7pq")
@@ -61,14 +50,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7414436, -4.7683716e-07, -0
 [node name="Enemy" type="Node" parent="."]
 
 [node name="Character" parent="Enemy" instance=ExtResource("1_bcbcq")]
-transform = Transform3D(7.93, 0, 0, 0, 7.93, 0, 0, 0, 7.93, 0, 6, -32.88977)
+transform = Transform3D(8.05, 0, 0, 0, 8.05, 0, 0, 0, 8.05, 0, 6, -32.88977)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.79863554, 0.601815, 0, -0.601815, 0.79863554, 0, 5.8867416, 5.220633)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
-fov = 100.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 4.0251827)
 
 [node name="Buttons" type="Node" parent="." node_paths=PackedStringArray("buttons")]
 script = ExtResource("4_p70al")
@@ -86,19 +74,56 @@ transform = Transform3D(1.9951282, 0.13951294, 0, -0.047716238, 0.68237406, -1.8
 [node name="Button3" parent="Buttons" instance=ExtResource("5_45d1s")]
 transform = Transform3D(2, 0, 0, 0, 0.8134732, -1.827091, 0, 1.827091, 0.8134732, 5, 2.7, -0.7)
 
-[node name="Track" type="Path3D" parent="."]
+[node name="VSRG" type="Node" parent="."]
+
+[node name="ChartManager" type="Node" parent="VSRG" node_paths=PackedStringArray("track", "audio_player")]
+script = ExtResource("6_45d1s")
+track = NodePath("../Track")
+audio_player = NodePath("../AudioStreamPlayer")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="VSRG"]
+
+[node name="InputHandler" type="Node" parent="VSRG" node_paths=PackedStringArray("chart_manager")]
+script = ExtResource("6_y7y61")
+chart_manager = NodePath("../ChartManager")
+metadata/_custom_type_script = "uid://b1r3whl8n67h3"
+
+[node name="Track" type="Path3D" parent="VSRG"]
 curve = SubResource("Curve3D_45d1s")
 debug_custom_color = Color(0, 0, 0, 0)
 script = ExtResource("5_p70al")
 
-[node name="@Path3D@31641" type="Path3D" parent="Track"]
-curve = SubResource("Curve3D_p70al")
+[node name="Lane0" type="Path3D" parent="VSRG/Track"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+curve = SubResource("Curve3D_45d1s")
 
-[node name="@Path3D@31642" type="Path3D" parent="Track"]
-curve = SubResource("Curve3D_y7y61")
+[node name="Indicator" type="MeshInstance3D" parent="VSRG/Track/Lane0" instance=ExtResource("8_indicator")]
+mesh = SubResource("CylinderMesh_indicator")
+script = ExtResource("9_uo7di")
 
-[node name="@Path3D@31643" type="Path3D" parent="Track"]
-curve = SubResource("Curve3D_q2d71")
+[node name="Lane1" type="Path3D" parent="VSRG/Track"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+curve = SubResource("Curve3D_45d1s")
 
-[node name="@Path3D@31644" type="Path3D" parent="Track"]
-curve = SubResource("Curve3D_uo7di")
+[node name="Indicator" type="MeshInstance3D" parent="VSRG/Track/Lane1" instance=ExtResource("8_indicator")]
+mesh = SubResource("CylinderMesh_indicator")
+script = ExtResource("9_uo7di")
+lane_index = 1
+
+[node name="Lane2" type="Path3D" parent="VSRG/Track"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+curve = SubResource("Curve3D_45d1s")
+
+[node name="Indicator" type="MeshInstance3D" parent="VSRG/Track/Lane2" instance=ExtResource("8_indicator")]
+mesh = SubResource("CylinderMesh_indicator")
+script = ExtResource("9_uo7di")
+lane_index = 2
+
+[node name="Lane3" type="Path3D" parent="VSRG/Track"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+curve = SubResource("Curve3D_45d1s")
+
+[node name="Indicator" type="MeshInstance3D" parent="VSRG/Track/Lane3" instance=ExtResource("8_indicator")]
+mesh = SubResource("CylinderMesh_indicator")
+script = ExtResource("9_uo7di")
+lane_index = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bobcoqynup0kj"]
 
-[ext_resource type="Script" uid="uid://cvlvwo03044wo" path="res://Scripts/button.gd" id="1_7ppm6"]
+[ext_resource type="Script" uid="uid://cvlvwo03044wo" path="res://Scripts/ui/button.gd" id="1_7ppm6"]
 [ext_resource type="Material" uid="uid://davsj838m13k8" path="res://Resources/Button_Inactive.tres" id="2_a506e"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ppm6"]
